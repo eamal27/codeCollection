@@ -149,7 +149,7 @@ $(document).ready(function() {
    
    // menu button redirect
    $("#homeButton").click(function () {
-      window.location.replace('collection.php')
+      window.location.replace('index.php')
    });
 
    // Add book button redirect

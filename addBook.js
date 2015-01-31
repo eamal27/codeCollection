@@ -1,7 +1,7 @@
 $(document).ready(function() {
    // menu button redirect
    $("#homeButton").click(function () {
-      window.location.replace('collection.php')
+      window.location.replace('index.php')
    });
 
    // Add button onclick
@@ -18,7 +18,7 @@ var validateForm = function() {
          $("#message").text(data);
          if(data.trim() == 'Book added successfully!'){
             // Display book list on home page
-            window.location.replace('collection.php');
+            window.location.replace('index.php');
          }
       });
    }
