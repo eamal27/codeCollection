@@ -41,7 +41,7 @@
 
 	try {
 	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	    $stmt = $conn->prepare("SELECT Title, Author, Description, Languages FROM books WHERE Languages LIKE $keyword ORDER BY Title ASC"); 
+	    $stmt = $conn->prepare("SELECT Title, Author, Description, Languages, id FROM books WHERE Languages LIKE $keyword ORDER BY Title ASC"); 
 	    $stmt->execute();
 
 

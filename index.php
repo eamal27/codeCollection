@@ -23,7 +23,11 @@
 				</div>
       		</div>
       	</header>
-      	<div id="leftPanel"></div>
+      	
+      	<div id="leftPanel">
+	      	<img id="arrow" src="images/icon_filter.png">
+      	</div>
+      	
       	<div id="leftDIV">
 	      	<div id="filterWrapper">
 	      		<div id="select_all">
@@ -64,7 +68,6 @@
 					<option value="yql">YQL</option>
 				</select>  
 	      	</div>
-	      	<img id="arrow" src="images/left_arrow.png">
 	    </div>
 		<div id="rightDIV">
 			<div id="mainWrapper">
