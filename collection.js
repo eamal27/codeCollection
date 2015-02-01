@@ -4,6 +4,9 @@
 
 $(document).ready(function() {
 
+  // load all books on page load
+  displayAllBooks();
+
   // adjust position of filter panel on scroll
   $(document).scroll(function() {
     if (window.pageYOffset > 40) {
@@ -13,75 +16,6 @@ $(document).ready(function() {
       $("#leftPanel").css("top","39px");
       $("#filterWrapper").css("top","39px");
     }
-  });
-
-  // load all books on page load
-  $.get('/codeCollection/books/phpFiles/getBookEntry.php', function(data){
-    $("#listWrapper").append(data);
-    $("#listings div:nth-child(1)").append('<div class="rating"><img class="star_1" src="images/empty_star.png"></img><img class="star_2" src="images/empty_star.png"></img><img class="star_3" src="images/empty_star.png"></img><img class="star_4" src="images/empty_star.png"></img><img class="star_5" src="images/empty_star.png"></img></div>');
-
-    $(".rating").css("float","right");
-
-    /******** STAR RATING LOGIC ********/
-    // hover over star #1
-    $(".star_1").mouseover(function () {
-      $(this).attr("src","images/full_star.png");
-    })
-    .mouseleave(function() {
-      $(this).attr("src","images/empty_star.png");
-       });
-
-    // hover over star #2
-    $(".star_2").mouseover(function () {
-      $(this).prev().attr("src","images/full_star.png");
-      $(this).attr("src","images/full_star.png");
-    })
-    .mouseleave(function() {
-      $(this).prev().attr("src","images/empty_star.png");
-      $(this).attr("src","images/empty_star.png");
-       });
-
-    // hover over star #3
-    $(".star_3").mouseover(function () {
-      $(this).prev().prev().attr("src","images/full_star.png");
-      $(this).prev().attr("src","images/full_star.png");
-      $(this).attr("src","images/full_star.png");
-    })
-    .mouseleave(function() {
-      $(this).prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().attr("src","images/empty_star.png");
-      $(this).attr("src","images/empty_star.png");
-       });
-
-    // hover over star #4
-    $(".star_4").mouseover(function () {
-      $(this).prev().prev().prev().attr("src","images/full_star.png");
-      $(this).prev().prev().attr("src","images/full_star.png");
-      $(this).prev().attr("src","images/full_star.png");
-      $(this).attr("src","images/full_star.png");
-    })
-    .mouseleave(function() {
-      $(this).prev().prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().attr("src","images/empty_star.png");
-      $(this).attr("src","images/empty_star.png");
-       });
-
-    // hover over star #5
-    $(".star_5").mouseover(function () {
-      $(this).prev().prev().prev().prev().attr("src","images/full_star.png");
-      $(this).prev().prev().prev().attr("src","images/full_star.png");
-      $(this).prev().prev().attr("src","images/full_star.png");
-      $(this).prev().attr("src","images/full_star.png");
-      $(this).attr("src","images/full_star.png");
-    })
-    .mouseleave(function() {
-      $(this).prev().prev().prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().prev().attr("src","images/empty_star.png");
-      $(this).prev().attr("src","images/empty_star.png");
-      $(this).attr("src","images/empty_star.png");
-    });
   });
 
   // clicking any of the languages passes filter
@@ -183,15 +117,12 @@ $(document).ready(function() {
   $('#select_all').click(function() {
     var allSelected = $("#languages option:not(:selected)").length == 0;
     if(!allSelected) {
-       $('#languages option').prop('selected', true);
-       $('#select_all_text').text("Unselect All");
-       $("#listWrapper").empty();
-       $("#bookResultsHeading").text("All Books");
+      $('#languages option').prop('selected', true);
+      $('#select_all_text').text("Unselect All");
+      $("#listWrapper").empty();
+      $("#bookResultsHeading").text("All Books");
 
-       $.get('/codeCollection/books/phpFiles/getBookEntry.php', function(data){
-          $("#listWrapper").append(data);
-       });
-
+      displayAllBooks();
     } else {
        $('#languages option').prop('selected', false);
        $('#select_all_text').text("Select All");
@@ -209,5 +140,75 @@ $(document).ready(function() {
   $("#addBookButton").click(function () {
     window.location.replace('addBook.php')
   });
+
+  function displayAllBooks() {
+    $.get('/codeCollection/books/phpFiles/getBookEntry.php', function(data){
+      $("#listWrapper").append(data);
+      $("#listings div:nth-child(1)").append('<div class="rating"><img class="star_1" src="images/empty_star.png"></img><img class="star_2" src="images/empty_star.png"></img><img class="star_3" src="images/empty_star.png"></img><img class="star_4" src="images/empty_star.png"></img><img class="star_5" src="images/empty_star.png"></img></div>');
+
+      $(".rating").css("float","right");
+
+      /******** STAR RATING LOGIC ********/
+      // hover over star #1
+      $(".star_1").mouseover(function () {
+        $(this).attr("src","images/full_star.png");
+      })
+      .mouseleave(function() {
+        $(this).attr("src","images/empty_star.png");
+         });
+
+      // hover over star #2
+      $(".star_2").mouseover(function () {
+        $(this).prev().attr("src","images/full_star.png");
+        $(this).attr("src","images/full_star.png");
+      })
+      .mouseleave(function() {
+        $(this).prev().attr("src","images/empty_star.png");
+        $(this).attr("src","images/empty_star.png");
+         });
+
+      // hover over star #3
+      $(".star_3").mouseover(function () {
+        $(this).prev().prev().attr("src","images/full_star.png");
+        $(this).prev().attr("src","images/full_star.png");
+        $(this).attr("src","images/full_star.png");
+      })
+      .mouseleave(function() {
+        $(this).prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().attr("src","images/empty_star.png");
+        $(this).attr("src","images/empty_star.png");
+         });
+
+      // hover over star #4
+      $(".star_4").mouseover(function () {
+        $(this).prev().prev().prev().attr("src","images/full_star.png");
+        $(this).prev().prev().attr("src","images/full_star.png");
+        $(this).prev().attr("src","images/full_star.png");
+        $(this).attr("src","images/full_star.png");
+      })
+      .mouseleave(function() {
+        $(this).prev().prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().attr("src","images/empty_star.png");
+        $(this).attr("src","images/empty_star.png");
+         });
+
+      // hover over star #5
+      $(".star_5").mouseover(function () {
+        $(this).prev().prev().prev().prev().attr("src","images/full_star.png");
+        $(this).prev().prev().prev().attr("src","images/full_star.png");
+        $(this).prev().prev().attr("src","images/full_star.png");
+        $(this).prev().attr("src","images/full_star.png");
+        $(this).attr("src","images/full_star.png");
+      })
+      .mouseleave(function() {
+        $(this).prev().prev().prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().prev().attr("src","images/empty_star.png");
+        $(this).prev().attr("src","images/empty_star.png");
+        $(this).attr("src","images/empty_star.png");
+      });
+    });
+  };
 
 });
