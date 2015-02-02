@@ -148,7 +148,49 @@ $(document).ready(function() {
 
       $(".rating").css("float","right");
 
+
       /******** STAR RATING LOGIC ********/
+
+      // click on star #1
+      $(".star_1").click( function () {
+        // store book id in variable
+        var id = $(this).parent().parent().parent().children('div').eq(4).text();
+        var rating = 1;
+
+        $.post('/codeCollection/books/phpFiles/submitRating.php',
+          {
+            id: id,
+            rating: rating
+          }, function(data){
+            alert(data);
+        });
+      });
+      // click on star #2
+      $(".star_2").click( function () {
+        // store book id in variable
+        var id = $(this).parent().parent().parent().children('div').eq(4).text();
+        var rate = 2;
+      });
+      // click on star #3
+      $(".star_3").click( function () {
+        // store book id in variable
+        var id = $(this).parent().parent().parent().children('div').eq(4).text();
+        var rate = 3;
+      });      
+      // click on star #4
+      $(".star_4").click( function () {
+        // store book id in variable
+        var id = $(this).parent().parent().parent().children('div').eq(4).text();
+        var rate = 4;
+      });      
+      // click on star #5
+      $(".star_5").click( function () {
+        // store book id in variable
+        var id = $(this).parent().parent().parent().children('div').eq(4).text();
+        var rate = 5;
+      });
+
+
       // hover over star #1
       $(".star_1").mouseover(function () {
         $(this).attr("src","images/full_star.png");
@@ -156,7 +198,6 @@ $(document).ready(function() {
       .mouseleave(function() {
         $(this).attr("src","images/empty_star.png");
          });
-
       // hover over star #2
       $(".star_2").mouseover(function () {
         $(this).prev().attr("src","images/full_star.png");
@@ -166,7 +207,6 @@ $(document).ready(function() {
         $(this).prev().attr("src","images/empty_star.png");
         $(this).attr("src","images/empty_star.png");
          });
-
       // hover over star #3
       $(".star_3").mouseover(function () {
         $(this).prev().prev().attr("src","images/full_star.png");
@@ -178,7 +218,6 @@ $(document).ready(function() {
         $(this).prev().attr("src","images/empty_star.png");
         $(this).attr("src","images/empty_star.png");
          });
-
       // hover over star #4
       $(".star_4").mouseover(function () {
         $(this).prev().prev().prev().attr("src","images/full_star.png");
@@ -192,7 +231,6 @@ $(document).ready(function() {
         $(this).prev().attr("src","images/empty_star.png");
         $(this).attr("src","images/empty_star.png");
          });
-
       // hover over star #5
       $(".star_5").mouseover(function () {
         $(this).prev().prev().prev().prev().attr("src","images/full_star.png");
@@ -209,6 +247,8 @@ $(document).ready(function() {
         $(this).attr("src","images/empty_star.png");
       });
     });
-  };
+  }
+
+
 
 });

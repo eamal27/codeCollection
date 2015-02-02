@@ -183,7 +183,7 @@ img#arrow {
 }
 
 #listings > div:nth-of-type(5) {
-	display: block;
+	display: none;
 }
 
 #bodyWrapper {
