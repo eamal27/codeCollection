@@ -12,7 +12,7 @@
 	    }
 
 	    function beginChildren() { 
-	        echo "<div id='listings'>"; 
+	        echo "<div id='listings' class='listings'>"; 
 	    } 
 
 	    function endChildren() { 
@@ -22,9 +22,8 @@
 
 	try {
 	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	    $stmt = $conn->prepare("SELECT Title, Author, Description, Languages, id FROM books ORDER BY Title ASC"); 
+	    $stmt = $conn->prepare("SELECT Title, Author, Description, Languages, id, Rating, RatingCount FROM books ORDER BY Title ASC"); 
 	    $stmt->execute();
-
 
 	    // set the resulting array to associative
 	    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); 
@@ -33,9 +32,6 @@
 	        echo $v;
 	    }
 	}
-
-
-
 	catch(PDOException $e) {
 	    echo "Error: " . $e->getMessage();
 	}
