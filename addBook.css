@@ -93,6 +93,12 @@ textarea[type='text']:focus {
 	box-shadow: inset 0 0 3px #387bbe,0 0 9px #387bbe;
 }
 
+#descriptionErrorMsg {
+	padding-left: 155px;
+	font-size: 12px;
+	padding-bottom: 5px;
+}
+
 select {
 	width: 410px;
 	background: none;

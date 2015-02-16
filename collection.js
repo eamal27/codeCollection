@@ -43,56 +43,22 @@ $(document).ready(function() {
       $(this).children().eq(1).children().text(ratingCount + " ratings");
       $(this).children().children(".avgRating").text(rating);
 
-      if (roundHalf(rating) == 1) {
+      if (roundHalf(rating) == 0) {
         $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-      }
-      else if (roundHalf(rating) == 1.5) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/half_star.png");
-      }
-      else if (roundHalf(rating) == 2) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-      }
-      else if (roundHalf(rating) == 2.5) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-        $(star[2]).attr("src","images/half_star.png");
-      }
-      else if (roundHalf(rating) == 3) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-        $(star[2]).attr("src","images/full_star.png");
-      }
-      else if (roundHalf(rating) == 3.5) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-        $(star[2]).attr("src","images/full_star.png");
-        $(star[3]).attr("src","images/half_star.png");
-      }
-      else if (roundHalf(rating) == 4) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-        $(star[2]).attr("src","images/full_star.png");
-        $(star[3]).attr("src","images/full_star.png");
-      }
-      else if (roundHalf(rating) == 4.5) {
-        $(star).attr("src","images/empty_star.png");
-        $(star[0]).attr("src","images/full_star.png");
-        $(star[1]).attr("src","images/full_star.png");
-        $(star[2]).attr("src","images/full_star.png");
-        $(star[3]).attr("src","images/full_star.png");
-        $(star[4]).attr("src","images/half_star.png");
-      }
-      else if (roundHalf(rating) == 5) {
-        $(star).attr("src","images/full_star.png");
+      } 
+      else {
+        $(star[Math.ceil(roundHalf(rating))-1]).prevAll().attr("src","images/full_star.png");
+        $(star[Math.ceil(roundHalf(rating))-1]).nextAll().attr("src","images/empty_star.png");
+        
+        if (roundHalf(rating) - Math.ceil(roundHalf(rating)) == 0) 
+        {
+          $(star[Math.ceil(roundHalf(rating))-1]).attr("src","images/full_star.png");
+        } 
+        else 
+        {
+          $(star[Math.ceil(roundHalf(rating))-1]).attr("src","images/half_star.png");
+        }
+
       }
 
     });

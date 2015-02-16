@@ -16,9 +16,9 @@
 	}
 
     //The following code checks validity of title, author and description
-	if (!preg_match("/^[a-zA-Z0-9 -:]*$/",$Title)) {
+	if (!preg_match("/^[a-zA-Z0-9 -:,.]*$/",$Title)) {
 		die ('Title should only contain Letters and spaces.');
-	} else if (!preg_match("/^[a-zA-Z0-9 ]*$/",$Author)) {
+	} else if (!preg_match("/^[a-zA-Z0-9 ,.-]*$/",$Author)) {
 		die ('Author name should only contain Letters and spaces.');
 	}
 	

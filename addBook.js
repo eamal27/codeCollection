@@ -67,6 +67,10 @@ function descriptionCheck(description) {
       //$("#surMessage").text("Invalid surname");
       $('[name="Description"]').css('box-shadow','0px 0px 1px 1px rgba(255,0,0,0.75)');
       return false;
+   } else if (description.length > 600) {
+      $("#descriptionErrorMsg").text("Exceeded 600 characters");
+      $('[name="Description"]').css('box-shadow','0px 0px 1px 1px rgba(255,0,0,0.75)');
+      return false;
    } else {
       // $("#surMessage").text("");
       $('[name="Description"]').css('box-shadow','none');
@@ -77,11 +81,11 @@ function descriptionCheck(description) {
 function languagesCheck(languages) {
     if (languages == null) {
       //$("#surMessage").text("Invalid surname");
-      $('[name="Languages"]').css('box-shadow','0px 0px 1px 1px rgba(255,0,0,0.75)');
+      $('[name="Languages[]"]').css('box-shadow','0px 0px 1px 1px rgba(255,0,0,0.75)');
       return false;
    } else {
       // $("#surMessage").text("");
-      $('[name="Languages"]').css('box-shadow','none');
+      $('[name="Languages[]"]').css('box-shadow','none');
       return true;
    }
 }

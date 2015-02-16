@@ -30,7 +30,9 @@ session_start();
 			<input type="text" name="Author" id="lname" value="" data-mini="true"/>
 
 	     	<label for="tel">Description:</label>
-			<textarea type="text" name="Description" data-mini="true"></textarea>
+			<textarea type="text" name="Description" onfocus="this.placeholder = ' 600 Characters or Less'" onblur="this.placeholder = ''" data-mini="true"></textarea>
+
+			<div id="descriptionErrorMsg"></div>
 
 			<label>Languages:</label>
 				<select multiple name = "Languages[]" id="languages">
